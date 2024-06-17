@@ -6,14 +6,18 @@ function App() {
   const [num1, setNum1] = useState("0");
   const [num2, setNum2] = useState("");
   const [sign, setSign] = useState("");
-  const [signCount, setSignCount] = useState(0); //ikinci işlemden itibaren o işlemi yapa yapa gitsin diye denetlicem
+  const [signCount, setSignCount] = useState(0);
 
   function handleNum(value) {
     if (signCount === 0) {
+      if (value === "." && num1.includes(".")) {
+        return;
+      }
       setNum1(num1 === "0" ? value : num1 + value);
-    }
-
-    if (signCount !== 0) {
+    } else {
+      if (value === "." && num2.includes(".")) {
+        return;
+      }
       setNum2(value === "0" && num2 === "" ? num2 : num2 + value);
     }
   }
@@ -22,8 +26,11 @@ function App() {
     if (num2 !== "") {
       performCalculation();
     }
-    setSign(value);
+    setSign(() => value);
     setSignCount((prev) => prev + 1);
+    // console.log(sign, "handleSign");
+    // console.log(num1, "handleSignNum1");
+    // console.log(num2, "handleSignNum2");
   }
 
   function performCalculation() {
@@ -58,6 +65,8 @@ function App() {
     }
     setNum1(String(result));
     setNum2("");
+    console.log(result, "result");
+    console.log(sign, "preformSign");
   }
 
   function handleReset() {
@@ -71,11 +80,10 @@ function App() {
     setNum1((prev) => prev * -1);
   }
 
-  console.log(num1, "num1");
-  console.log(num2, "num2");
-  console.log(sign, "sign");
-
-  console.log(signCount, "signCount");
+  // console.log(num1, "num1");
+  // console.log(num2, "num2");
+  // console.log(sign, "sign");
+  // console.log(signCount, "signCount");
 
   return (
     <div className="calculator">
