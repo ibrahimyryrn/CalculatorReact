@@ -26,7 +26,7 @@ function App() {
     if (num2 !== "") {
       performCalculation();
     }
-    setSign(() => value);
+    setSign(value);
     setSignCount((prev) => prev + 1);
     // console.log(sign, "handleSign");
     // console.log(num1, "handleSignNum1");
@@ -65,8 +65,10 @@ function App() {
     }
     setNum1(String(result));
     setNum2("");
-    console.log(result, "result");
-    console.log(sign, "preformSign");
+    // console.log(result, "result");
+    // console.log(sign, "preformSign");
+    // console.log(num1, "performNum1");
+    // console.log(num2, "perforNum2");
   }
 
   function handleReset() {
@@ -80,10 +82,10 @@ function App() {
     setNum1((prev) => prev * -1);
   }
 
-  // console.log(num1, "num1");
-  // console.log(num2, "num2");
-  // console.log(sign, "sign");
-  // console.log(signCount, "signCount");
+  // console.log(num1, "EnAlttaNum1");
+  // console.log(num2, "EnAlttaNum2");
+  // console.log(sign, "EnAlttaSign");
+  // console.log(signCount, "EnAlttaSignCount");
 
   return (
     <div className="calculator">
